@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-:root {
+        :root {
             --primary: #e07a9f;
             --primary-dark: #c95e88;
             --bg-light: #fdf8fa;
@@ -59,17 +59,17 @@
         
         .member-card { background-color: transparent; width: 100%; height: 450px; perspective: 1000px; cursor: pointer; }
         .member-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); }
-        .member-card:hover .member-card-inner { transform: rotateY(180deg); }
         
+        /* Kartın dönmüş hali için sınıf */
+        .member-card.flipped .member-card-inner { transform: rotateY(180deg); }
+
         .member-card-front, .member-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; align-items: center; background: white; }
         
-        /* Ön Yüz */
         .member-card-front { padding: 15px; justify-content: flex-start; }
         .member-img { width: 100%; height: 320px; border-radius: 15px; background-size: cover; background-position: center; margin-bottom: 20px; background-color: #eee; }
         .member-card-front h3 { font-size: 22px; color: #333; margin-bottom: 5px; }
         .member-card-front p { color: var(--primary); font-weight: 600; font-size: 14px; text-transform: uppercase; }
         
-        /* Arka Yüz */
         .member-card-back { background: linear-gradient(135deg, #ffeef2 0%, #fff 100%); border: 2px solid #ffeff2; color: #444; transform: rotateY(180deg); justify-content: center; padding: 30px; }
         .member-card-back h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--primary); margin-bottom: 20px; border-bottom: 2px solid #ffeff2; padding-bottom: 10px; width: 100%; }
         .info-list { list-style: none; width: 100%; text-align: left; }
@@ -100,7 +100,7 @@
         .social-icon:hover { background-color: var(--primary); color: white; transform: translateY(-5px) scale(1.1); box-shadow: var(--shadow-soft); }
         .copyright { font-size: 12px; color: #bbb; letter-spacing: 1px; margin-top: 10px; }
 
-        /* --- MOBİL UYUMLULUK (BURASI ÇOK ÖNEMLİ) --- */
+        /* --- MOBİL UYUMLULUK --- */
         @media (max-width: 900px) {
             nav { flex-direction: column; padding: 15px; gap: 15px; }
             .logo img { max-width: 140px; }
@@ -108,7 +108,7 @@
             nav ul li { margin: 0 8px; }
             nav ul li a { font-size: 13px; }
 
-            .hero { height: auto; min-height: 85vh; padding-top: 100px; padding-bottom: 50px; background-attachment: scroll; } /* Mobilde sabit arkaplan sorun çıkarır, scroll yaptık */
+            .hero { height: auto; min-height: 85vh; padding-top: 100px; padding-bottom: 50px; background-attachment: scroll; }
             .main-logo-img { max-width: 90%; }
             .hero-content p { font-size: 16px; letter-spacing: 4px; }
             
@@ -128,8 +128,18 @@
             .track-list { padding-left: 0; }
             .music-card:hover .track-list { margin-top: 20px; }
             .track-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    }
+
+    /* Bilgisayarda hover çalışsın */
+    @media (min-width: 901px) {
+        .member-card:hover .member-card-inner { transform: rotateY(180deg); }
+    }
+
+    .member-card:active .member-card-inner,
+    .member-card:focus .member-card-inner {
+        transform: rotateY(180deg);
+    }
+</style>
 </head>
 <body>
 
@@ -195,7 +205,6 @@
 
     <section class="members" id="members">
         <div class="member-container">
-            
             <div class="member-card">
                 <div class="member-card-inner">
                     <div class="member-card-front">
@@ -209,7 +218,6 @@
                             <li><strong>Doğum Tarihi:</strong> 23 Ağustos 2004</li>
                             <li><strong>Burç:</strong> Başak</li>
                             <li><strong>Rol:</strong> Main Vocal</li>
-                
                         </ul>
                     </div>
                 </div>
@@ -226,9 +234,8 @@
                         <h3>Esin Bahat</h3>
                         <ul class="info-list">
                             <li><strong>Doğum Tarihi:</strong> 9 Ağustos 2000</li>
-                            <li><strong>Burç:</strong>Aslan</li>
+                            <li><strong>Burç:</strong> Aslan</li>
                             <li><strong>Rol:</strong> Ana Dansçı</li>
-                        
                         </ul>
                     </div>
                 </div>
@@ -246,8 +253,7 @@
                         <ul class="info-list">
                             <li><strong>Doğum Tarihi:</strong> 18 Nisan 2001</li>
                             <li><strong>Burç:</strong> Koç</li>
-                            <li><strong>Rol:</strong>Sub2</li>
-                           
+                            <li><strong>Rol:</strong> Sub2</li>
                         </ul>
                     </div>
                 </div>
@@ -263,10 +269,9 @@
                     <div class="member-card-back">
                         <h3>Lidya Pınar</h3>
                         <ul class="info-list">
-                            <li><strong>Doğum Tarihi:</strong>  24 Haziran 2003</li>
+                            <li><strong>Doğum Tarihi:</strong> 24 Haziran 2003</li>
                             <li><strong>Burç:</strong> Yengeç</li>
                             <li><strong>Rol:</strong> Lead Vocal</li>
-                            
                         </ul>
                     </div>
                 </div>
@@ -284,8 +289,7 @@
                         <ul class="info-list">
                             <li><strong>Doğum Tarihi:</strong> 16 Mayıs 2000</li>
                             <li><strong>Burç:</strong> Boğa</li>
-                            <li><strong>Rol:</strong>Sub1</li>
-                        
+                            <li><strong>Rol:</strong> Sub1</li>
                         </ul>
                     </div>
                 </div>
@@ -295,7 +299,7 @@
                 <div class="member-card-inner">
                     <div class="member-card-front">
                         <div class="member-img" style="background-image: url('indir (40).jpeg');"></div>
-                        <h3>Hilal</h3>
+                        <h3>Hilal Yelekçi</h3>
                         <p>Lead Dancer</p>
                     </div>
                     <div class="member-card-back">
@@ -304,15 +308,13 @@
                             <li><strong>Doğum Tarihi:</strong> 20 Mayıs 2001</li>
                             <li><strong>Burç:</strong> Boğa</li>
                             <li><strong>Rol:</strong> Lead Dancer</li>
-                  
                         </ul>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
-
+  <div class="member-card" onclick=""></div>
     <section class="section-header">
         <h2 class="section-title">Müziklerimiz</h2>
     </section>
@@ -347,7 +349,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="music-card">
                 <div class="card-main">
                     <div class="music-img" style="background-image: url('Deluxe.png');"></div>
@@ -408,6 +410,15 @@
         </div>
         <p class="copyright">© 2026 MANIFEST OFFICIAL. ALL RIGHTS RESERVED.</p>
     </footer>
+
+    <script>
+        // Kartlara tıklanınca dönmesini sağlayan sihirli kod
+        document.querySelectorAll('.member-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+            });
+        });
+    </script>
 
 </body>
 </html>
